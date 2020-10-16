@@ -7,7 +7,9 @@ import { Counter } from './components/Counter';
 import { AllSongs } from './components/AllSongs';
 import { Song } from './components/Song';
 import { AllArtists } from './components/AllArtists';
+import { Artist } from './components/Artist';
 import { AllAlbums } from './components/AllAlbums';
+import { Album } from './components/Album';
 
 
 import './custom.css'
@@ -22,6 +24,8 @@ export default class App extends Component {
                 <Route path='/AllSongs' component={AllSongs} />
                 <Route path='/AllAlbums' component={AllAlbums} />
                 <Route path='/AllArtists' component={AllArtists} />
+                <Route path='/Artist/:id' component={Artist} />
+                <Route path='/Album/:id' component={Album} />
                 <Route path='/Song/:songid' component={Song} />
                 <Route path='/counter' component={Counter} />
                 <Route path='/fetch-data' component={FetchData} />
