@@ -1,6 +1,9 @@
 ﻿import React, { Component } from 'react';
 import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.css';
+import { Row, Col, Container, Form } from 'reactstrap';
+import './Song.css';
+import { Link } from 'react-router-dom';
 
 
 export class AllAlbums extends Component {
@@ -40,9 +43,23 @@ export class AllAlbums extends Component {
         })
     }
 
+    renderData() {
+        return (
+            <Container fluid>
+                <Row>
+                    {this.state.items.map((item) => (
+                        <Col xs={4}>
+                            <Link to={{ pathname: `/Album/${item.id}` }}><img src={item.imageFilePath} /> </Link>
+                            <p>{item.title}</p>
+                        </Col>
+                    ))};
+                </Row>
+            </Container>
+        )
+    }
+
 
     render() {
-
         var { isLoaded, items } = this.state;
 
         if (!isLoaded) {
@@ -51,23 +68,31 @@ export class AllAlbums extends Component {
 
         else {
             return (
+
                 <div>
-                    <h1 id='title'>All Albums</h1>
-                    <Table stripid bordered hover>
-                        <thead>
-                            <tr>
-                                <td>id</td>
-                                <td>artistID</td>
-                                <td>title</td>
-                                <td>released in</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {this.renderTableData()}
-                        </tbody>
-                    </Table>
+                    {this.renderData()}
                 </div>
+
             )
         }
     }
 }
+
+            //return (
+            //    <div>
+            //        <h1 id='title'>All Albums</h1>
+            //        <Table stripid bordered hover>
+            //            <thead>
+            //                <tr>
+            //                    <td>id</td>
+            //                    <td>artistID</td>
+            //                    <td>title</td>
+            //                    <td>released in</td>
+            //                </tr>
+            //            </thead>
+            //            <tbody>
+            //                {this.renderTableData()}
+            //            </tbody>
+            //        </Table>
+            //    </div>
+            //)

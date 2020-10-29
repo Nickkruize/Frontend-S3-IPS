@@ -1,6 +1,9 @@
 ﻿import React, { Component } from 'react';
 import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.css';
+import { Link } from 'react-router-dom';
+import { Row, Col, Container, Form } from 'reactstrap';
+import './Song.css';
 
 
 export class AllArtists extends Component {
@@ -26,22 +29,23 @@ export class AllArtists extends Component {
             });
     }
 
-    renderTableData() {
-        return this.state.items.map((item, index) => {
-            const { id, name, startYear} = item
-            return (
-                <tr key={id}>
-                    <td>{id}</td>
-                    <td>{name}</td>
-                    <td>{startYear}</td>
-                </tr>
-            )
-        })
+    renderData() {
+        return (
+            <Container fluid>
+                <Row>
+                    {this.state.items.map((item) => (
+                        <Col xs={4}>
+                            <Link to={{ pathname: `/Artist/${item.id}` }}><img src={item.imageFilePath} /> </Link>
+                            <p>{item.name}</p>
+                        </Col>
+                    ))};
+                </Row>
+            </Container>
+        )
     }
 
 
     render() {
-
         var { isLoaded, items } = this.state;
 
         if (!isLoaded) {
@@ -50,21 +54,11 @@ export class AllArtists extends Component {
 
         else {
             return (
+
                 <div>
-                    <h1 id='title'>All artists</h1>
-                    <Table stripid bordered hover>
-                        <thead>
-                            <tr>
-                                <td>id</td>
-                                <td>name</td>
-                                <td>active since</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {this.renderTableData()}
-                        </tbody>
-                    </Table>
+                    {this.renderData()}
                 </div>
+
             )
         }
     }

@@ -1,7 +1,11 @@
 ﻿import React, { Component } from 'react';
 import Table from 'react-bootstrap/Table';
+import Bootstrap from 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Link } from 'react-router-dom';
+import { Row, Col, Container, Form } from 'reactstrap';
+import './Song.css';
+
 
 export class AllSongs extends Component {
     static displayName = AllSongs.name;
@@ -11,7 +15,8 @@ export class AllSongs extends Component {
         this.state = {
             items: [],
             isLoaded: false,
-        }
+        };
+        var counter = 0;
     }
 
     componentDidMount() {
@@ -30,25 +35,32 @@ export class AllSongs extends Component {
         return this.state.items.map((item, index) => {
             const { id, title, length, numberOnAlbum, albumID } = item
             return (
-                <tr key={id}>
-                    <td>{id}</td>
-                    <td><Link to={{
-                        pathname: '/Song/',
-                        state: {
-                            songid: { id }
-                        }
-                    }}>{title}</Link></td>
-                    <td>{secondsToHms(length)}</td>
+                <tr key={index}>
                     <td>{numberOnAlbum}</td>
-                    <td>{albumID}</td>
+                    <td><Link to={{ pathname: `/Song/${item.id}` }}>{title}</Link></td>
+                    <td>{secondsToHms(length)}</td>
                 </tr>
             )
         })
     }
 
+    renderData() {
+        return (
+            <Container fluid>
+                <Row>
+                        {this.state.items.map((item) => (
+                            <Col xs={4}>
+                            <Link to={{ pathname: `/Song/${item.id}` }}><img src="https://media.nu.nl/m/il5xbunadizj_wd640.jpeg" /> </Link>
+                            <p>{item.title}</p>
+                        </Col>
+                        ))};
+                </Row>
+            </Container>
+        )
+    }
+
 
     render() {
-
         var { isLoaded, items } = this.state;
 
         if (!isLoaded) {
@@ -58,16 +70,14 @@ export class AllSongs extends Component {
         else {
             return (
                 <div>
-                    <h1 id='title'>All songs</h1>
+                    <h1 id='title'>All Songs</h1>
                     <Table stripid bordered hover>
                         <thead>
                             <tr>
-                            <td>id</td>
-                            <td>title</td>
-                            <td>length</td>
-                            <td>no on album</td>
-                                <td>album id</td>
-                                </tr>
+                                <td></td>
+                                <td>title</td>
+                                <td>length</td>
+                            </tr>
                         </thead>
                         <tbody>
                             {this.renderTableData()}
@@ -78,6 +88,7 @@ export class AllSongs extends Component {
         }
     }
 }
+
 
 function secondsToHms(d) {
     d = Number(d);
