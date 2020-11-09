@@ -10,8 +10,12 @@ import { AllArtists } from './components/AllArtists';
 import { Artist } from './components/Artist';
 import { AllAlbums } from './components/AllAlbums';
 import { Album } from './components/Album';
-
-
+import { Game } from './components/Game';
+import { AllGames } from './components/AllGames';
+import { Publisher } from './components/Publisher';
+import { AllPublishers } from './components/AllPublishers';
+import { Genre } from './components/Genre';
+import { AllGenres } from './components/AllGenres';
 import './custom.css'
 
 export default class App extends Component {
@@ -29,6 +33,13 @@ export default class App extends Component {
                 <Route path='/Song/:songid' component={Song} />
                 <Route path='/counter' component={Counter} />
                 <Route path='/fetch-data' component={FetchData} />
+
+                <Route path='/AllGames' component={AllGames} />
+                <Route path='/AllPublishers' component={AllPublishers} />
+                <Route path='/AllGenres' component={AllGenres} />
+                <Route path='/Game/:id' component={Game} />
+                <Route path='/Publisher/:id' component={Publisher} />
+                <Route path='/Genre/:id' component={Genre} />
             </Layout>
         );
     }
