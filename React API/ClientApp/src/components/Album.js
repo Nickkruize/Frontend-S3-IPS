@@ -14,8 +14,7 @@ export class Album extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            album: Album,
-            songs: [],
+            users: [],
             error: Error
         }
     }
@@ -25,14 +24,13 @@ export class Album extends Component {
         const id = this.props.match.params.id;
 
         const api = axios.create({
-            baseURL: "https://localhost:44325/api/Albums"
+            baseURL: "https://localhost:44382/api/users/getall"
         })
 
-        api.get('/' + id,)
+        api.get()
             .then(res => {
                 console.log(res.data)
-                this.setState({ album: res.data })
-                this.setState({ songs: res.data.songs })
+                this.setState({ users: res.data })
             }).catch(error => {
                 console.error(error);
                 this.setState({ error: error })
@@ -55,14 +53,15 @@ export class Album extends Component {
     //}
 
     renderTableData() {
-        if (this.state.songs.length > 0) {
-            return this.state.songs.map((item, index) => {
-                const { id, title, length, numberOnAlbum, albumID } = item
+        if (this.state.users.length > 0) {
+            return this.state.users.map((item, index) => {
+                const { id, username, email, password} = item
                 return (
                     <tr key={index}>
-                        <td>{numberOnAlbum}</td>
-                        <td><Link to={{ pathname: `/Song/${id}` }}>{title}</Link>  </td>                  
-                        <td>{secondsToHms(length)}</td>
+                        <td>{id}</td>
+                        <td>{username}</td>
+                        <td>{email}</td>
+                        <td>{password}</td>        
                     </tr>
                 )
             })
@@ -78,9 +77,10 @@ export class Album extends Component {
                 <Table stripid bordered hover>
                     <thead>
                         <tr>
-                            <td></td>
-                            <td>title</td>
-                            <td>length</td>
+                            <td>id</td>
+                            <td>username</td>
+                            <td>email</td>
+                            <td>password</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -90,7 +90,7 @@ export class Album extends Component {
             )
         }
         else {
-            return <h2> No songs found </h2>
+            return <h2> No users found </h2>
         }
     }
 
@@ -98,15 +98,6 @@ export class Album extends Component {
     render() {
         return (
             <Container fluid>
-                <Row>
-                    <Col>
-                        <img src={this.state.album.imageFilePath} />
-                    </Col>
-                    <Col>
-                        <h2>{this.state.album.title} released in {this.state.album.releaseYear}</h2>
-                    </Col>
-                </Row>
-                <br />
                 <div>
                     {this.CheckForSongs()}
                     </div>

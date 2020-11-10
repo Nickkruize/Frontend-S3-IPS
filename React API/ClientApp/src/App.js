@@ -16,6 +16,8 @@ import { Publisher } from './components/Publisher';
 import { AllPublishers } from './components/AllPublishers';
 import { Genre } from './components/Genre';
 import { AllGenres } from './components/AllGenres';
+import { Register } from './components/Register';
+import { Login } from './components/Login';
 import './custom.css'
 
 export default class App extends Component {
@@ -29,10 +31,12 @@ export default class App extends Component {
                 <Route path='/AllAlbums' component={AllAlbums} />
                 <Route path='/AllArtists' component={AllArtists} />
                 <Route path='/Artist/:id' component={Artist} />
-                <Route path='/Album/:id' component={Album} />
+                <Route path='/Album' component={Album} />
                 <Route path='/Song/:songid' component={Song} />
                 <Route path='/counter' component={Counter} />
                 <Route path='/fetch-data' component={FetchData} />
+                <Route path='/Register' component={Register} />
+                <Route path='/Login' component={Login} />
 
                 <Route path='/AllGames' component={AllGames} />
                 <Route path='/AllPublishers' component={AllPublishers} />
