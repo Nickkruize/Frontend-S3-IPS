@@ -52,7 +52,7 @@ export class AllPublishers extends Component {
                             <Link to={{ pathname: `/Publisher/${item.id}` }}><img src={item.logo} /> </Link>
                             <p>{item.name}</p>
                         </Col>
-                    ))};
+                    ))}
                 </Row>
             </Container>
         )

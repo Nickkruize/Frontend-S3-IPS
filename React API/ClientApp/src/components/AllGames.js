@@ -54,7 +54,7 @@ export class AllGames extends Component {
                             <Link to={{ pathname: `/Game/${item.id}` }}><img src={item.image} /> </Link>
                             <p>{item.title}</p>
                         </Col>
-                    ))};
+                    ))}
                 </Row>
             </Container>
         )

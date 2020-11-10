@@ -38,7 +38,7 @@ export class AllGenres extends Component {
                             <Link to={{ pathname: `/Genre/${item.id}` }}>{item.name} </Link>
                             <p>{item.name}</p>
                         </Col>
-                    ))};
+                    ))}
                 </Row>
             </Container>
         )

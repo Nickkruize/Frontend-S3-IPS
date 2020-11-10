@@ -35,12 +35,15 @@ export class Login extends Component {
                 { withCredentials: false }
             )
             .then(response => {
-                try {
-                    this.state.loginErrors = null;
-                    console.log("Logged in succesfully!", response.data)
-                    this.props.handleSuccessfulAuth(response.data);
+                console.log(response);
+                if (response.status == 'Invalid') {
+                    alert('Invalid Login Attempt');
                 }
-                catch (e) {}
+                else {
+                    var session = new Session();
+                    session.set("User", response.data)
+                    this.props.history.push("/");
+                }
                 })
             .catch(error => {
                 this.state.loginErrors = error.response.data;
@@ -55,7 +58,13 @@ export class Login extends Component {
                     <h2>{this.state.loginErrors}</h2>
                 </div>
             )
-        }
+    }
+
+
+
+    onSubmit() {
+
+    }
 
     handleClick = () => {
         this.forceUpdate();
@@ -90,5 +99,21 @@ export class Login extends Component {
                 </Form>
             </div>
         );
+    }
+}
+
+class Session extends Map {
+    set(id, value) {
+        if (typeof value === 'object') value = JSON.stringify(value);
+        sessionStorage.setItem(id, value);
+    }
+
+    get(id) {
+        const value = sessionStorage.getItem(id);
+        try {
+            return JSON.parse(value);
+        } catch (e) {
+            return value;
+        }
     }
 }

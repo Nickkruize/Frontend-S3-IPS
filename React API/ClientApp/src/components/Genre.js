@@ -14,7 +14,7 @@ export class Genre extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            Genre: [],
+            Genre: null,
             Games: [],
             error: Error
         }
@@ -30,9 +30,10 @@ export class Genre extends Component {
 
         api.get('/' + id,)
             .then(res => {
-                console.log(res.data)
-                this.setState({ Genre: res.data })
-                this.setState({ Games: res.data.gameGenres})
+                this.setState({ Genre: res.data });
+                this.setState({ Games: this.state.Genre.gameGenres });
+                console.log(this.state.Games);
+                //this.setState({ Games: res.data.gameGenres });
             }).catch(error => {
                 console.error(error);
                 this.setState({ error: error })
@@ -46,16 +47,19 @@ export class Genre extends Component {
                 <Row>
                     {this.state.Games.map((item) => (
                         <Col xs={4}>
-                            <Link to={{ pathname: `/Game/${item.gameId}` }}> {item.gameId} </Link>
-                            <p>{item.title}</p>
+                            <Link to={{ pathname: `/Game/${item.game.gameId}` }}><img src={item.game.image}/>  </Link>
+                            {item.title}
                         </Col>
-                    ))};
+                    ))}
                 </Row>
             </Container>
         )
     }
 
     render() {
+        if (!this.state.Genre) {
+            return <div/>
+        }
         return (
             <div>
                 <h2 key={this.state.Genre.id}>{this.state.Genre.name}</h2>
@@ -64,8 +68,3 @@ export class Genre extends Component {
         )
     }
 }
-
-//{ this.state.artist.albums }.forEach(
-//    <h3>album.title</h3>
-//)
-
