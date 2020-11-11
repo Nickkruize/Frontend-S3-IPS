@@ -11,7 +11,8 @@ export class NavMenu extends Component {
 
     this.toggleNavbar = this.toggleNavbar.bind(this);
     this.state = {
-      collapsed: true
+        collapsed: true,
+        User : null
     };
   }
 
@@ -19,7 +20,41 @@ export class NavMenu extends Component {
     this.setState({
       collapsed: !this.state.collapsed
     });
-  }
+    }
+
+    Logout() {
+        if (sessionStorage.getItem("User") != null) {
+            sessionStorage.removeItem("User");
+            this.setState({ User: null });
+        }
+    }
+
+    componentDidMount() {
+        var session = new Session();
+        if (session.get("User") != null) {
+            console.log(this.state.User);
+            this.setState({ User: session.get("User") });
+        }
+    }
+
+    CurrentUser() {
+        if (this.state.User != null) {
+            return (
+                <NavItem>
+                    <NavLink className="text-dark" to="/">{this.state.User.username}</NavLink><
+                        button tag={Link} className="text-dark" onClick={this.Logout}>{this.state.User.username}</button>
+                </NavItem>
+                )
+        }
+        else {
+            return (
+                <NavItem >
+                    <NavLink tag={Link} className="text-dark" to="/Login">Login</NavLink>
+                </NavItem>
+                )
+        }
+
+    }
 
   render () {
     return (
@@ -38,7 +73,8 @@ export class NavMenu extends Component {
                 </NavItem>
                 <NavItem>
                   <NavLink tag={Link} className="text-dark" to="/fetch-data">Fetch data</NavLink>
-                </NavItem>
+                </NavItem>                    
+                {this.CurrentUser()}
               </ul>
             </Collapse>
           </Container>
@@ -46,4 +82,20 @@ export class NavMenu extends Component {
       </header>
     );
   }
+}
+
+class Session extends Map {
+    set(id, value) {
+        if (typeof value === 'object') value = JSON.stringify(value);
+        sessionStorage.setItem(id, value);
+    }
+
+    get(id) {
+        const value = sessionStorage.getItem(id);
+        try {
+            return JSON.parse(value);
+        } catch (e) {
+            return value;
+        }
+    }
 }
