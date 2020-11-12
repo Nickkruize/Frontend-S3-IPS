@@ -1,10 +1,7 @@
 ﻿import React, { Component } from 'react';
-import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.css';
 import axios from 'axios';
-import { get } from 'jquery';
-import { Album } from './Album';
-import { Row, Col, Container, Form } from 'reactstrap';
+import { Row, Col, Container } from 'reactstrap';
 import './Song.css';
 import { Link } from 'react-router-dom';
 
@@ -33,7 +30,6 @@ export class Genre extends Component {
                 this.setState({ Genre: res.data });
                 this.setState({ Games: this.state.Genre.gameGenres });
                 console.log(this.state.Games);
-                //this.setState({ Games: res.data.gameGenres });
             }).catch(error => {
                 console.error(error);
                 this.setState({ error: error })
@@ -47,7 +43,7 @@ export class Genre extends Component {
                 <Row>
                     {this.state.Games.map((item) => (
                         <Col xs={4}>
-                            <Link to={{ pathname: `/Game/${item.game.gameId}` }}><img src={item.game.image}/>  </Link>
+                            <Link to={{ pathname: `/Game/${item.gameId}` }}><img src={item.game.image}/>  </Link>
                             {item.title}
                         </Col>
                     ))}
