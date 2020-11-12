@@ -13,7 +13,9 @@ export class NavMenu extends Component {
     this.state = {
         collapsed: true,
         User : null
-    };
+      };
+
+      this.Logout = this.Logout.bind(this);
   }
 
   toggleNavbar () {
@@ -41,8 +43,9 @@ export class NavMenu extends Component {
         if (this.state.User != null) {
             return (
                 <NavItem>
-                    <NavLink className="text-dark" to="/">{this.state.User.username}</NavLink><
-                        button tag={Link} className="text-dark" onClick={this.Logout}>{this.state.User.username}</button>
+                    <NavLink className="text-dark" to="/">{this.state.User.username}
+                        <button tag={Link} className="text-dark" onClick={this.Logout}>Logout</button>
+                    </NavLink>
                 </NavItem>
                 )
         }
@@ -70,10 +73,7 @@ export class NavMenu extends Component {
                 </NavItem>
                 <NavItem>
                   <NavLink tag={Link} className="text-dark" to="/counter">Counter</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/fetch-data">Fetch data</NavLink>
-                </NavItem>                    
+                </NavItem>                  
                 {this.CurrentUser()}
               </ul>
             </Collapse>

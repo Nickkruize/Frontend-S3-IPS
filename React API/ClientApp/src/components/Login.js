@@ -1,6 +1,8 @@
 ﻿import React, { Component } from "react";
-import { Row, Form } from 'reactstrap';
+import { Row, Form, Col, Container, Button } from 'reactstrap';
 import axios from "axios";
+import 'bootstrap/dist/css/bootstrap.css';
+
 
 export class Login extends Component {
     constructor(props) {
@@ -74,32 +76,65 @@ export class Login extends Component {
 
     render() {
         return (
-            <div>
-                <Row>
-                    {this.CheckForErrors}
+            <Container>
+                <Row xs="1">
+                            <Col>
+                                <h1 style={{ color: 'red', textAlign:"center", width: "100%"}}>
+                                    {this.CheckForErrors()}
+                                </h1>
+                            </Col>
                 </Row>
                 <Form onSubmit={this.handleSubmit}>
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="Email"
-                        value={this.state.email}
-                        onChange={this.handleChange}
-                        required
-                    />
+                    <Row>
+                        <Col xs={4} />
+                        <Col xs={4} style={{ textAlign: "center" }}>
+                            <label style={{ width: "100%" }}>Email</label>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col xs={4}/>
+                        <Col xs={4} style={{ textAlign: "center" }} >
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        placeholder="Email"
+                                        value={this.state.email}
+                                        onChange={this.handleChange}
+                                required
+                                style={{ width: "100%" }}
+                                    />
+                                </Col>
+                    </Row>
+                    <Row>
+                        <Col xs={4} />
+                        <Col xs={4} style={{ textAlign: "center" }}>
+                            <label style={{ width: "100%" }}>Password</label>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col xs={4} />
+                        <Col xs={4} style={{ textAlign: "center"}} >
+                            <input
+                                type="password"
+                                name="password"
+                                placeholder="Password"
+                                value={this.state.password}
+                                onChange={this.handleChange}
+                                required
+                                style={{ width: "100%"}}
+                            />
+                        </Col>
+                    </Row>
+                    <br />
+                    <Row>
+                        <Col xs={4} />
+                        <Col xs={4} style={{ textAlign: "center" }}>
+                            <Button color="primary" size="lg" block type="submit" onClick={this.handleClick}>Login</Button>
+                        </Col>
+                    </Row>
 
-                    <input
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                        value={this.state.password}
-                        onChange={this.handleChange}
-                        required
-                    />
-
-                    <button type="submit" onClick={this.handleClick}>Login</button>
-                </Form>
-            </div>
+                    </Form>
+            </Container>
         );
     }
 }
