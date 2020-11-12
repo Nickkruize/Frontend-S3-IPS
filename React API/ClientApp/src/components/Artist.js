@@ -1,10 +1,7 @@
 ﻿import React, { Component } from 'react';
-import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.css';
 import axios from 'axios';
-import { get } from 'jquery';
-import { Album } from './Album';
-import { Row, Col, Container, Form } from 'reactstrap';
+import { Row, Col, Container } from 'reactstrap';
 import './Song.css';
 import { Link } from 'react-router-dom';
 

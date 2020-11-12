@@ -41,8 +41,8 @@ export class Publisher extends Component {
         return (
             <Container fluid>
                 <Row>
-                    {this.state.Games.map((item) => (
-                        <Col xs={4}>
+                    {this.state.Games.map((item, index) => (
+                        <Col xs={4} key={index}>
                             <Link to={{ pathname: `/Game/${item.id}` }}><img src={item.image} />  </Link>
                             {item.title}
                         </Col>

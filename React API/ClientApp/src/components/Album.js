@@ -1,12 +1,9 @@
 ﻿import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import axios from 'axios';
-import { get } from 'jquery';
-import { Row, Col, Container, Form } from 'reactstrap';
+import {Container } from 'reactstrap';
 import './Song.css';
-import { Link } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
-import Bootstrap from 'bootstrap';
 
 export class Album extends Component {
     static displayName = Album.name;

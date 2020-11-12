@@ -1,9 +1,7 @@
 ﻿import React, { Component } from 'react';
-import Table from 'react-bootstrap/Table';
-import Bootstrap from 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Link } from 'react-router-dom';
-import { Row, Col, Container, Form } from 'reactstrap';
+import { Row, Col, Container} from 'reactstrap';
 import './Song.css';
 
 
@@ -35,9 +33,9 @@ export class AllGames extends Component {
         return this.state.items.map((item, index) => {
             const { id, title, releaseYear, description, publisherId } = item
             return (
-                <tr key={index}>
-                    <td>{releaseYear}</td>
-                    <td><Link to={{ pathname: `/Game/${item.id}` }}>{title}</Link></td>
+                <tr>
+                    <td key={index}>{releaseYear}</td>
+                    <td><Link to={{ pathname: `/Game/${id}` }}>{title}</Link></td>
                     <td>{description}</td>
                     <td>{publisherId}</td>
                 </tr>

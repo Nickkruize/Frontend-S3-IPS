@@ -46,8 +46,8 @@ export class AllPublishers extends Component {
         return (
             <Container fluid>
                 <Row>
-                    {this.state.items.map((item) => (
-                        <Col xs={3}>
+                    {this.state.items.map((item, index) => (
+                        <Col xs={3} key={index}>
                             <Link to={{ pathname: `/Publisher/${item.id}` }}><img src={item.logo} /> </Link>
                             <p>{item.name}</p>
                         </Col>

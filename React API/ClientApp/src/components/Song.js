@@ -1,8 +1,6 @@
 ﻿import React, { Component } from 'react';
-import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.css';
 import axios from 'axios';
-import { get } from 'jquery';
 
 export class Song extends Component {
     static displayName = Song.name;

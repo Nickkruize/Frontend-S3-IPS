@@ -1,9 +1,8 @@
 ﻿import React, { Component } from 'react';
 import Table from 'react-bootstrap/Table';
-import Bootstrap from 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Link } from 'react-router-dom';
-import { Row, Col, Container, Form } from 'reactstrap';
+import { Row, Col, Container} from 'reactstrap';
 import './Song.css';
 
 

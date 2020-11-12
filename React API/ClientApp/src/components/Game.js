@@ -1,9 +1,7 @@
 ﻿import React, { Component } from 'react';
-import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.css';
-import { Row, Col, Container, Form } from 'reactstrap';
+import { Row, Col, Container} from 'reactstrap';
 import axios from 'axios';
-import { get } from 'jquery';
 import './Song.css';
 
 export class Game extends Component {
