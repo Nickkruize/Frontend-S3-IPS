@@ -12,10 +12,9 @@ export class AllSongs extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            items: [],
+            items: null,
             isLoaded: false,
         };
-        var counter = 0;
     }
 
     componentDidMount() {
@@ -32,11 +31,11 @@ export class AllSongs extends Component {
 
     renderTableData() {
         return this.state.items.map((item, index) => {
-            const { id, title, length, numberOnAlbum, albumID } = item
+            const { id, title, length, numberOnAlbum } = item
             return (
                 <tr key={index}>
                     <td>{numberOnAlbum}</td>
-                    <td><Link to={{ pathname: `/Song/${item.id}` }}>{title}</Link></td>
+                    <td><Link to={{ pathname: `/Song/${id}` }}>{title}</Link></td>
                     <td>{secondsToHms(length)}</td>
                 </tr>
             )
@@ -49,7 +48,7 @@ export class AllSongs extends Component {
                 <Row>
                         {this.state.items.map((item) => (
                             <Col xs={4}>
-                            <Link to={{ pathname: `/Song/${item.id}` }}><img src="https://media.nu.nl/m/il5xbunadizj_wd640.jpeg" /> </Link>
+                            <Link to={{ pathname: `/Song/${item.id}` }}><img src="https://media.nu.nl/m/il5xbunadizj_wd640.jpeg" alt=""/> </Link>
                             <p>{item.title}</p>
                         </Col>
                         ))};
@@ -60,9 +59,7 @@ export class AllSongs extends Component {
 
 
     render() {
-        var { isLoaded, items } = this.state;
-
-        if (!isLoaded) {
+        if (!this.state.items) {
             return <div>Loading..</div>
         }
 
@@ -94,7 +91,7 @@ function secondsToHms(d) {
     var m = Math.floor(d % 3600 / 60);
     var s = Math.floor(d % 3600 % 60);
 
-    var mDisplay = m > 0 ? m + (m == 1 ? " minute, " : " minutes, ") : "";
-    var sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
+    var mDisplay = m > 0 ? m + (m === 1 ? " minute, " : " minutes, ") : "";
+    var sDisplay = s > 0 ? s + (s === 1 ? " second" : " seconds") : "";
     return mDisplay + sDisplay;
 }

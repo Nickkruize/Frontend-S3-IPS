@@ -43,7 +43,7 @@ export class Artist extends Component {
                 <Row>
                     {this.state.albums.map((item) => (
                         <Col xs={4}>
-                            <Link to={{ pathname: `/Album/${item.id}` }}><img src={item.imageFilePath} /> </Link>
+                            <Link to={{ pathname: `/Album/${item.id}` }}><img src={item.imageFilePath} alt=""/> </Link>
                             <p>{item.title}</p>
                         </Col>
                     ))};

@@ -45,9 +45,7 @@ export class AllGenres extends Component {
 
 
     render() {
-        var { isLoaded, items } = this.state;
-
-        if (!isLoaded) {
+        if (!this.state.items) {
             return <div>Loading..</div>
         }
 

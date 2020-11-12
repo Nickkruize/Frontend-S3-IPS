@@ -11,10 +11,9 @@ export class AllGames extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            items: [],
+            items: null,
             isLoaded: false,
         };
-        var counter = 0;
     }
 
     componentDidMount() {
@@ -49,7 +48,7 @@ export class AllGames extends Component {
                 <Row>
                     {this.state.items.map((item) => (
                         <Col xs={4}>
-                            <Link to={{ pathname: `/Game/${item.id}` }}><img src={item.image} /> </Link>
+                            <Link to={{ pathname: `/Game/${item.id}` }}><img src={item.image} alt=""/> </Link>
                             <p>{item.title}</p>
                         </Col>
                     ))}
@@ -60,9 +59,7 @@ export class AllGames extends Component {
 
 
     render() {
-        var { isLoaded, items } = this.state;
-
-        if (!isLoaded) {
+        if (!this.state.items) {
             return <div>Loading..</div>
         }
 

@@ -43,7 +43,7 @@ export class Publisher extends Component {
                 <Row>
                     {this.state.Games.map((item, index) => (
                         <Col xs={4} key={index}>
-                            <Link to={{ pathname: `/Game/${item.id}` }}><img src={item.image} />  </Link>
+                            <Link to={{ pathname: `/Game/${item.id}` }}><img src={item.image} alt=""/>  </Link>
                             {item.title}
                         </Col>
                     ))}

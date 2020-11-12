@@ -34,7 +34,7 @@ export class AllArtists extends Component {
                 <Row>
                     {this.state.items.map((item) => (
                         <Col xs={4}>
-                            <Link to={{ pathname: `/Artist/${item.id}` }}><img src={item.imageFilePath} /> </Link>
+                            <Link to={{ pathname: `/Artist/${item.id}` }}><img src={item.imageFilePath} alt=""/> </Link>
                             <p>{item.name}</p>
                         </Col>
                     ))};
@@ -45,9 +45,7 @@ export class AllArtists extends Component {
 
 
     render() {
-        var { isLoaded, items } = this.state;
-
-        if (!isLoaded) {
+        if (!this.state.items) {
             return <div>Loading..</div>
         }
 

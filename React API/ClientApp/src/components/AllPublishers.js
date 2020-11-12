@@ -48,7 +48,7 @@ export class AllPublishers extends Component {
                 <Row>
                     {this.state.items.map((item, index) => (
                         <Col xs={3} key={index}>
-                            <Link to={{ pathname: `/Publisher/${item.id}` }}><img src={item.logo} /> </Link>
+                            <Link to={{ pathname: `/Publisher/${item.id}` }}><img src={item.logo} alt=""/> </Link>
                             <p>{item.name}</p>
                         </Col>
                     ))}
@@ -59,9 +59,7 @@ export class AllPublishers extends Component {
 
 
     render() {
-        var { isLoaded, items } = this.state;
-
-        if (!isLoaded) {
+        if (!this.state.items) {
             return <div>Loading..</div>
         }
 

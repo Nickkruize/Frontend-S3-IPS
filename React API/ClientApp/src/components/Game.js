@@ -40,7 +40,7 @@ export class Game extends Component {
             <Container fluid>
                 <Row>
                     <Col xs={4}>
-                        <img src={this.state.game.image} />
+                        <img src={this.state.game.image} alt=""/>
                     </Col>
                     <Col>
                         <h2>{this.state.game.title} released in {this.state.game.releaseYear}</h2>

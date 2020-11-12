@@ -43,7 +43,7 @@ export class Genre extends Component {
                 <Row>
                     {this.state.Games.map((item, index) => (
                         <Col xs={4} key={index}>
-                            <Link to={{ pathname: `/Game/${item.gameId}` }}><img src={item.game.image}/>  </Link>
+                            <Link to={{ pathname: `/Game/${item.gameId}` }}><img src={item.game.image} alt=""/>  </Link>
                             {item.title}
                         </Col>
                     ))}

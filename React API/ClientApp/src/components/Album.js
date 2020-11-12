@@ -18,7 +18,7 @@ export class Album extends Component {
 
     componentDidMount() {
 
-        const id = this.props.match.params.id;
+        //const id = this.props.match.params.id;
 
         const api = axios.create({
             baseURL: "https://localhost:44382/api/users/getall"
@@ -101,14 +101,4 @@ export class Album extends Component {
             </Container>
         )
     }
-}
-
-function secondsToHms(d) {
-    d = Number(d);
-    var m = Math.floor(d % 3600 / 60);
-    var s = Math.floor(d % 3600 % 60);
-
-    var mDisplay = m > 0 ? m + (m == 1 ? " minute, " : " minutes, ") : "";
-    var sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
-    return mDisplay + sDisplay;
 }

@@ -1,7 +1,6 @@
 ﻿import React, { Component } from 'react';
-import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.css';
-import { Row, Col, Container, Form } from 'reactstrap';
+import { Row, Col, Container} from 'reactstrap';
 import './Song.css';
 import { Link } from 'react-router-dom';
 
@@ -12,7 +11,7 @@ export class AllAlbums extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            items: [],
+            items: null,
             isLoaded: false,
         }
     }
@@ -49,7 +48,7 @@ export class AllAlbums extends Component {
                 <Row>
                     {this.state.items.map((item) => (
                         <Col xs={4}>
-                            <Link to={{ pathname: `/Album/${item.id}` }}><img src={item.imageFilePath} /> </Link>
+                            <Link to={{ pathname: `/Album/${item.id}` }}><img src={item.imageFilePath} alt="" /> </Link>
                             <p>{item.title}</p>
                         </Col>
                     ))};
@@ -60,9 +59,7 @@ export class AllAlbums extends Component {
 
 
     render() {
-        var { isLoaded, items } = this.state;
-
-        if (!isLoaded) {
+        if (!this.state.items) {
             return <div>Loading..</div>
         }
 

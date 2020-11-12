@@ -23,7 +23,7 @@ export class Login extends Component {
     }
 
     handleSubmit(event) {
-        const { email, password, loginErrors } = this.state;
+        const { email, password } = this.state;
 
         axios
             .post(
@@ -36,7 +36,7 @@ export class Login extends Component {
             )
             .then(response => {
                 console.log(response);
-                if (response.status == 'Invalid') {
+                if (response.status === 'Invalid') {
                     alert('Invalid Login Attempt');
                 }
                 else {
@@ -46,18 +46,20 @@ export class Login extends Component {
                 }
                 })
             .catch(error => {
-                this.state.loginErrors = error.response.data;
+                this.setState({ loginErrors: error.response.data });
                 console.log(this.state.loginErrors);
             });
         event.preventDefault();
     }
 
     CheckForErrors() {
+        if (this.state.loginErrors != null) {
             return (
                 <div>
                     <h2>{this.state.loginErrors}</h2>
                 </div>
             )
+        }
     }
 
 
@@ -74,7 +76,7 @@ export class Login extends Component {
         return (
             <div>
                 <Row>
-                    {this.CheckForErrors()}
+                    {this.CheckForErrors}
                 </Row>
                 <Form onSubmit={this.handleSubmit}>
                     <input
