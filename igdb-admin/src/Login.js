@@ -1,4 +1,4 @@
-﻿import React, { Component } from "react";
+import React, { Component } from "react";
 import { Row, Form, Col, Container, Button } from 'reactstrap';
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.css';
@@ -16,6 +16,8 @@ export class Login extends Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.clearPasswordError = this.clearPasswordError.bind(this);
+
     }
 
     handleChange(event) {
@@ -26,6 +28,7 @@ export class Login extends Component {
 
     handleSubmit(event) {
         const { email, password } = this.state;
+        var session = new Session();
 
         axios
             .post(
@@ -42,7 +45,6 @@ export class Login extends Component {
                     alert('Invalid Login Attempt');
                 }
                 else {
-                    var session = new Session();
                     session.set("User", response.data)
                     this.props.history.push("/");
                 }
@@ -52,27 +54,37 @@ export class Login extends Component {
                 console.log(this.state.loginErrors);
             });
         event.preventDefault();
+        this.clearPasswordError();
     }
 
     CheckForErrors() {
         if (this.state.loginErrors != null) {
             return (
                 <div>
-                    <h2>{this.state.loginErrors}</h2>
+                    <h2 style={{ color: 'red', textAlign:"center"}}>{this.state.loginErrors}</h2>
                 </div>
             )
         }
     }
 
+    clearPasswordError(){
+            this.setState({
+                password:"",
+                loginErrors: null
+            })
+    }
+
+    // clearloginError(){
+    //     this.setState({
+    //         loginErrors: null
+    //     })
+    // }
+
     render() {
         return (
             <Container>
-                <Row xs="1">
-                            <Col>
-                                <h1 style={{ color: 'red', textAlign:"center", width: "100%"}}>
-                                    {this.CheckForErrors()}
-                                </h1>
-                            </Col>
+                <Row xs={1}>
+                    {this.CheckForErrors()}
                 </Row>
                 <Form onSubmit={this.handleSubmit}>
                     <Row>
@@ -122,7 +134,6 @@ export class Login extends Component {
                             <Button color="primary" size="lg" block type="submit">Login</Button>
                         </Col>
                     </Row>
-
                     </Form>
             </Container>
         );
