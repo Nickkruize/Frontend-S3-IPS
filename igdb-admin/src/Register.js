@@ -72,7 +72,7 @@ export class Register extends Component {
                                         type="username"
                                         name="username"
                                         placeholder="Username"
-                                        value={this.state.email}
+                                        value={this.state.username}
                                         onChange={this.handleChange}
                                         required
                                         style={{ width: "100%" }}
@@ -132,7 +132,7 @@ export class Register extends Component {
                                         type="password"
                                         name="password_confirmation"
                                         placeholder="Password confirmation"
-                                        value={this.state.password}
+                                        value={this.state.password_confirmation}
                                         onChange={this.handleChange}
                                         required
                                         style={{ width: "100%" }}
