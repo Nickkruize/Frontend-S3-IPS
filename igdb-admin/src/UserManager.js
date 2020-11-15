@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Table} from 'reactstrap';
 import axios from "axios";
+import {AccesDenied} from './AccessDenied';
 import 'bootstrap/dist/css/bootstrap.css';
 
 export class UserManager extends Component {
@@ -29,9 +30,9 @@ export class UserManager extends Component {
             .catch(error => {
             })
         }
-        else{
-            this.props.history.push("/Denied");
-        }
+        // else{
+        //     this.props.history.push("/Denied");
+        // }
     }
 
     CheckIfUsersIsAdmin() {
@@ -73,8 +74,12 @@ export class UserManager extends Component {
     // }
 
     render() {
-        if (!this.state.AllUsers) {
+        if (!this.state.AllUsers && this.CheckIfUsersIsAdmin()) {
             return <div>Loading..</div>
+        }
+
+        if(!this.CheckIfUsersIsAdmin()){
+            return <AccesDenied/>
         }
             return (
                 <div>

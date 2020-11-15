@@ -4,6 +4,10 @@ import {Container} from 'reactstrap';
 
 export class AccessDenied extends Component {
 
+    constructor(props){
+        super(props);
+    }
+
 render()
 {
     return(
