@@ -48,7 +48,7 @@ export class Register extends Component {
                     }
                 })
                 .catch(error => {
-                    this.setState({ registrationErrors: error.response.data });
+                    this.setState({ registrationErrors: error.data });
                     console.log("registration error", this.state.registrationErrors);
                 });
             event.preventDefault();
