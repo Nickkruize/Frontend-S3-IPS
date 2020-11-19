@@ -9,12 +9,12 @@ it("renders without crashing", () =>{
     expect(wrapper).toBeTruthy()
 })
 
-test("expect layout is called at least once", () => {
+it("calls layout at least once", () => {
     const wrapper = shallow(<App/>);
     expect(wrapper.find(Layout).length).toEqual(1);
   });
 
-test("expect Navmenu is called at least once", () => {
+it("calls Navmenu at least once", () => {
     const wrapper = shallow(<Layout/>);
     expect(wrapper.find(NavMenu).length).toEqual(1);
   });

@@ -12,7 +12,7 @@ it("renders without crashing", () => {
   ReactDOM.render(<Login></Login>, div)
 })
 
-test('renders login container correctly', () => {
+it('renders login container correctly', () => {
   const {getByTestId} = render(<Login></Login>)
   expect(getByTestId('LoginContainer')).toBeInTheDocument();
 });
@@ -29,7 +29,7 @@ it('renders emailinput correctly', () => {
   expect(getByTestId('EmailInput')).toBeInTheDocument();
 });
 
-test('renders passwordlabel correctly', () => {
+it('renders passwordlabel correctly', () => {
     const {getByTestId} = render(<Login></Login>)
     expect(getByTestId('PasswordLabel')).toHaveTextContent("Password")
     expect(getByTestId('PasswordLabel')).toBeInTheDocument();
@@ -40,7 +40,7 @@ it('renders passwordinput correctly', () => {
   expect(getByTestId('PasswordInput')).toBeInTheDocument();
 });
 
-test('renders LoginButton', () => {
+it('renders LoginButton correctly', () => {
   const {getByTestId} = render(<Login></Login>)
   expect(getByTestId("LoginButton")).toBeInTheDocument();
 });

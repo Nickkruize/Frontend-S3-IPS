@@ -57,19 +57,19 @@ export class Register extends Component {
         render() {
             return (
                 <div>
-                    <Container id="RegisterContainer">
+                    <Container data-testid="RegisterContainer">
                         <Form onSubmit={this.handleSubmit}>
                             <Row>
                                 <Col xs={4} />
                                 <Col xs={4} style={{ textAlign: "center" }}>
-                                    <label id="UsernameLabel" style={{ width: "100%" }}>Username</label>
+                                    <label data-testid="UsernameLabel" style={{ width: "100%" }}>Username</label>
                                 </Col>
                             </Row>
                             <Row>
                                 <Col xs={4} />
                                 <Col xs={4} style={{ textAlign: "center" }} >
                                     <input
-                                        id = "UsernameInput"
+                                        data-testid = "UsernameInput"
                                         type="username"
                                         name="username"
                                         placeholder="Username"
@@ -83,14 +83,14 @@ export class Register extends Component {
                             <Row>
                                 <Col xs={4} />
                                 <Col xs={4} style={{ textAlign: "center" }}>
-                                    <label id="EmailLabel" style={{ width: "100%" }}>Email</label>
+                                    <label data-testid="EmailLabel" style={{ width: "100%" }}>Email</label>
                                 </Col>
                             </Row>
                             <Row>
                                 <Col xs={4} />
                                 <Col xs={4} style={{ textAlign: "center" }} >
                                     <input
-                                        id = "EmailInput"
+                                        data-testid = "EmailInput"
                                         type="email"
                                         name="email"
                                         placeholder="Email"
@@ -104,14 +104,14 @@ export class Register extends Component {
                             <Row>
                                 <Col xs={4} />
                                 <Col xs={4} style={{ textAlign: "center" }}>
-                                    <label id="PasswordLabel" style={{ width: "100%" }}>Password</label>
+                                    <label data-testid="PasswordLabel" style={{ width: "100%" }}>Password</label>
                                 </Col>
                             </Row>
                             <Row>
                                 <Col xs={4} />
                                 <Col xs={4} style={{ textAlign: "center" }} >
                                     <input
-                                        id="PasswordInput"
+                                        data-testid="PasswordInput"
                                         type="password"
                                         name="password"
                                         placeholder="Password"
@@ -125,14 +125,14 @@ export class Register extends Component {
                             <Row>
                                 <Col xs={4} />
                                 <Col xs={4} style={{ textAlign: "center" }}>
-                                    <label id="PasswordConfirmLabel" style={{ width: "100%" }}>Confirm password</label>
+                                    <label data-testid="PasswordConfirmLabel" style={{ width: "100%" }}>Confirm Password</label>
                                 </Col>
                             </Row>
                             <Row>
                                 <Col xs={4} />
                                 <Col xs={4} style={{ textAlign: "center" }} >
                                     <input
-                                        id="PasswordConfirmInput"
+                                        data-testid="PasswordConfirmInput"
                                         type="password"
                                         name="password_confirmation"
                                         placeholder="Password confirmation"
@@ -147,7 +147,7 @@ export class Register extends Component {
                             <Row>
                                 <Col xs={4} />
                                 <Col xs={4} style={{ textAlign: "center" }}>
-                                    <Button id="RegisterButton" color="primary" size="lg" block type="submit">Register</Button>
+                                    <Button data-testid="RegisterButton" color="primary" size="lg" block type="submit">Register</Button>
                                 </Col>
                             </Row>
 

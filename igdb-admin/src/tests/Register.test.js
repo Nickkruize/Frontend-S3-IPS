@@ -1,58 +1,63 @@
 import { render} from '@testing-library/react';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import {Register} from '../Register';
 
-test('renders Register container', () => {
-  render(
-    <Register />);
+it("renders without crashing", () => {
+    const div = document.createElement("div");
+    ReactDOM.render(<Register></Register>, div)
+  })
 
-  var element = document.getElementById("RegisterContainer")
-  expect(element).toBeInTheDocument();
+it('renders Register container', () => {
+    const {getByTestId} = render(<Register></Register>)
+    expect(getByTestId('RegisterContainer')).toBeInTheDocument();
 });
 
-test('renders username inputs', () => {
-    render(
-      <Register />);
+it("renders usernamelabel correctly", () =>{
+    const {getByTestId} = render(<Register></Register>)
+    expect(getByTestId('UsernameLabel')).toHaveTextContent("Username")
+    expect(getByTestId('UsernameLabel')).toBeInTheDocument();
+  })
   
-    var usernamelabel = document.getElementById("UsernameLabel")
-    var usernameinput = document.getElementById("UsernameInput")
-    expect(usernamelabel).toBeInTheDocument();
-    expect(usernameinput).toBeInTheDocument();
+  it('renders usernameinput correctly', () => {
+    const {getByTestId} = render(<Register></Register>)
+    expect(getByTestId('UsernameInput')).toBeInTheDocument();
   });
 
-test('renders email inputs', () => {
-  render(
-    <Register />);
-
-  var emaillabel = document.getElementById("EmailLabel")
-  var emailinput = document.getElementById("EmailInput")
-  expect(emaillabel).toBeInTheDocument();
-  expect(emailinput).toBeInTheDocument();
-});
-
-test('renders password inputs', () => {
-  render(
-    <Register />);
-
-  var passwordlabel = document.getElementById("PasswordLabel")
-  var passwordinput = document.getElementById("PasswordInput")
-  expect(passwordlabel).toBeInTheDocument();
-  expect(passwordinput).toBeInTheDocument();
-});
-
-test('renders passwordconfirm inputs', () => {
-    render(
-      <Register />);
+  it("renders emaillabel correctly", () =>{
+    const {getByTestId} = render(<Register></Register>)
+    expect(getByTestId('EmailLabel')).toHaveTextContent("Email")
+    expect(getByTestId('EmailLabel')).toBeInTheDocument();
+  })
   
-    var passwordconfirmlabel = document.getElementById("PasswordConfirmLabel")
-    var passwordconfirminput = document.getElementById("PasswordConfirmInput")
-    expect(passwordconfirmlabel).toBeInTheDocument();
-    expect(passwordconfirminput).toBeInTheDocument();
+  it('renders emailinput correctly', () => {
+    const {getByTestId} = render(<Register></Register>)
+    expect(getByTestId('EmailInput')).toBeInTheDocument();
   });
 
-test('renders RegisterButton', () => {
-  render(
-    <Register />);
+  it('renders passwordlabel correctly', () => {
+    const {getByTestId} = render(<Register></Register>)
+    expect(getByTestId('PasswordLabel')).toHaveTextContent("Password")
+    expect(getByTestId('PasswordLabel')).toBeInTheDocument();
+});
 
-  var button = document.getElementById("RegisterButton")
-  expect(button).toBeInTheDocument();
+it('renders passwordinput correctly', () => {
+    const {getByTestId} = render(<Register></Register>)
+  expect(getByTestId('PasswordInput')).toBeInTheDocument();
+});
+
+it('renders passwordconfirmlabel correctly', () => {
+    const {getByTestId} = render(<Register></Register>)
+    expect(getByTestId('PasswordConfirmLabel')).toHaveTextContent("Confirm Password")
+    expect(getByTestId('PasswordConfirmLabel')).toBeInTheDocument();
+});
+
+it('renders passwordconfirminput correctly', () => {
+    const {getByTestId} = render(<Register></Register>)
+  expect(getByTestId('PasswordConfirmInput')).toBeInTheDocument();
+});
+
+it('renders RegisterButton correctly', () => {
+    const {getByTestId} = render(<Register></Register>)
+    expect(getByTestId("RegisterButton")).toBeInTheDocument();
 });
