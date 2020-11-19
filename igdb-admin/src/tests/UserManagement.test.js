@@ -2,17 +2,20 @@ import {UserManager} from '../UserManager';
 import {shallow} from "enzyme";
 import { AccessDenied } from '../AccessDenied';
 
+
+const wrapper = shallow(<UserManager/>)
+
+const user = {
+    email: "piet@gmail.com",
+    username: "Piet",
+    roleID : 0
+  }
+  
 const admin = {
     email: "david@gmail.com",
     username: "Dave",
     roleID : 1
   };
-
-  const user = {
-    email: "piet@gmail.com",
-    username: "Piet",
-    roleID : 0
-  }
 
   const UserList = 
   [
@@ -32,7 +35,6 @@ const admin = {
   
   describe("rendering of the page for different account-priveleges", () => {
     it("updates the user in the state", () => {
-      const wrapper = shallow(<UserManager />);
       expect(wrapper.state("User")).toEqual(null);
 
       wrapper.setState({User : admin})
@@ -43,7 +45,6 @@ const admin = {
     });
 
     it("updates AllUsers in the state", () => {
-        const wrapper = shallow(<UserManager />);
 
         expect(wrapper.state("AllUsers")).toEqual(null);
 
@@ -53,8 +54,6 @@ const admin = {
     });
 
     it("Return accessdenied when user is set null", () => {
-        const wrapper = shallow(<UserManager />);
-
         wrapper.setState({User : null})
 
         expect(wrapper.find(AccessDenied).length).toEqual(1);
@@ -62,8 +61,6 @@ const admin = {
     });
 
     it("Return accessdenied when user is set to user", () => {
-        const wrapper = shallow(<UserManager />);
-
         wrapper.setState({User : user})
         wrapper.setState({AllUsers : UserList})
 
@@ -72,8 +69,6 @@ const admin = {
     });
 
     it("Renders the users table when User is set to admin", () => {
-        const wrapper = shallow(<UserManager />);
-
         wrapper.setState({User : admin})
         wrapper.setState({AllUsers : UserList})
 
