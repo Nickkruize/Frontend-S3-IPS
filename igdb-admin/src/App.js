@@ -7,7 +7,7 @@ import {UserManager} from './UserManager';
 import {AccessDenied} from './AccessDenied';
 import {Register} from './Register';
 import {NoMatch} from './NoMatch';
-import './App.css';
+import './css/App.css';
 
 export default class App extends Component{
  static displayname = App.name
@@ -16,7 +16,7 @@ export default class App extends Component{
     return (  
       <Layout>
       <Switch>
-        <Route exact path='/' component={Home} />
+      <Route exact path='/' component={Home} />
       <Route exact path='/Login' component={Login}/>
       <Route exact path="/UserManagement" component={UserManager}/>
       <Route exact path="/Register" component={Register}/>

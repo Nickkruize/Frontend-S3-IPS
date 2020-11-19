@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Collapse, Container, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import './navigation.css';
+import './css/navigation.css';
 
 export class NavMenu extends Component {
   static displayName = NavMenu.name;

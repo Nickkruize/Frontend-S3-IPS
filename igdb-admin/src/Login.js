@@ -82,6 +82,7 @@ export class Login extends Component {
 
     render() {
         return (
+            <div id="LoginContainer" name="LoginDIV">
             <Container>
                 <Row xs={1}>
                     {this.CheckForErrors()}
@@ -90,13 +91,14 @@ export class Login extends Component {
                     <Row>
                         <Col xs={4} />
                         <Col xs={4} style={{ textAlign: "center" }}>
-                            <label style={{ width: "100%" }}>Email</label>
+                            <label id="EmailLabel" style={{ width: "100%" }}>Email</label>
                         </Col>
                     </Row>
                     <Row>
                         <Col xs={4}/>
                         <Col xs={4} style={{ textAlign: "center" }} >
                                     <input
+                                    id = "EmailInput"
                                         type="email"
                                         name="email"
                                         placeholder="Email"
@@ -110,13 +112,14 @@ export class Login extends Component {
                     <Row>
                         <Col xs={4} />
                         <Col xs={4} style={{ textAlign: "center" }}>
-                            <label style={{ width: "100%" }}>Password</label>
+                            <label id="PasswordLabel" style={{ width: "100%" }}>Password</label>
                         </Col>
                     </Row>
                     <Row>
                         <Col xs={4} />
                         <Col xs={4} style={{ textAlign: "center"}} >
                             <input
+                                id = "PasswordInput"
                                 type="password"
                                 name="password"
                                 placeholder="Password"
@@ -131,11 +134,12 @@ export class Login extends Component {
                     <Row>
                         <Col xs={4} />
                         <Col xs={4} style={{ textAlign: "center" }}>
-                            <Button color="primary" size="lg" block type="submit">Login</Button>
+                            <Button id = "LoginButton" color="primary" size="lg" block type="submit">Login</Button>
                         </Col>
                     </Row>
                     </Form>
             </Container>
+            </div>
         );
     }
 }
