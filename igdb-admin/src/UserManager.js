@@ -75,14 +75,14 @@ export class UserManager extends Component {
 
     render() {
         if (!this.state.AllUsers && this.CheckIfUsersIsAdmin()) {
-            return <div>Loading..</div>
+            return <div id="Loading">Loading..</div>
         }
 
         if(!this.CheckIfUsersIsAdmin()){
-            return <AccessDenied/>
+            return <AccessDenied id="Denied"/>
         }
             return (
-                <div>
+                <div className={this.state.User.username}>
                     <Table bordered hover>
                         <thead>
                             <tr>

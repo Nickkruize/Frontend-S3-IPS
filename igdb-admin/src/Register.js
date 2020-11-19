@@ -57,18 +57,19 @@ export class Register extends Component {
         render() {
             return (
                 <div>
-                    <Container>
+                    <Container id="RegisterContainer">
                         <Form onSubmit={this.handleSubmit}>
                             <Row>
                                 <Col xs={4} />
                                 <Col xs={4} style={{ textAlign: "center" }}>
-                                    <label style={{ width: "100%" }}>Username</label>
+                                    <label id="UsernameLabel" style={{ width: "100%" }}>Username</label>
                                 </Col>
                             </Row>
                             <Row>
                                 <Col xs={4} />
                                 <Col xs={4} style={{ textAlign: "center" }} >
                                     <input
+                                        id = "UsernameInput"
                                         type="username"
                                         name="username"
                                         placeholder="Username"
@@ -82,13 +83,14 @@ export class Register extends Component {
                             <Row>
                                 <Col xs={4} />
                                 <Col xs={4} style={{ textAlign: "center" }}>
-                                    <label style={{ width: "100%" }}>Email</label>
+                                    <label id="EmailLabel" style={{ width: "100%" }}>Email</label>
                                 </Col>
                             </Row>
                             <Row>
                                 <Col xs={4} />
                                 <Col xs={4} style={{ textAlign: "center" }} >
                                     <input
+                                        id = "EmailInput"
                                         type="email"
                                         name="email"
                                         placeholder="Email"
@@ -102,13 +104,14 @@ export class Register extends Component {
                             <Row>
                                 <Col xs={4} />
                                 <Col xs={4} style={{ textAlign: "center" }}>
-                                    <label style={{ width: "100%" }}>Password</label>
+                                    <label id="PasswordLabel" style={{ width: "100%" }}>Password</label>
                                 </Col>
                             </Row>
                             <Row>
                                 <Col xs={4} />
                                 <Col xs={4} style={{ textAlign: "center" }} >
                                     <input
+                                        id="PasswordInput"
                                         type="password"
                                         name="password"
                                         placeholder="Password"
@@ -122,13 +125,14 @@ export class Register extends Component {
                             <Row>
                                 <Col xs={4} />
                                 <Col xs={4} style={{ textAlign: "center" }}>
-                                    <label style={{ width: "100%" }}>Confirm password</label>
+                                    <label id="PasswordConfirmLabel" style={{ width: "100%" }}>Confirm password</label>
                                 </Col>
                             </Row>
                             <Row>
                                 <Col xs={4} />
                                 <Col xs={4} style={{ textAlign: "center" }} >
                                     <input
+                                        id="PasswordConfirmInput"
                                         type="password"
                                         name="password_confirmation"
                                         placeholder="Password confirmation"
@@ -143,7 +147,7 @@ export class Register extends Component {
                             <Row>
                                 <Col xs={4} />
                                 <Col xs={4} style={{ textAlign: "center" }}>
-                                    <Button color="primary" size="lg" block type="submit">Register</Button>
+                                    <Button id="RegisterButton" color="primary" size="lg" block type="submit">Register</Button>
                                 </Col>
                             </Row>
 
