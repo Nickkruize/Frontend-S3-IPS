@@ -6,6 +6,7 @@ import App from '../App';
 
 it("renders without crashing", () =>{
     const wrapper = shallow(<App />);
+    expect(wrapper).toBeTruthy()
 })
 
 test("expect layout is called at least once", () => {

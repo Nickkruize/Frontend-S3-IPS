@@ -1,38 +1,46 @@
-import { render} from '@testing-library/react';
+import {render, cleanup} from '@testing-library/react';
+import React from "react";
+import ReactDOM from 'react-dom';
 import {Login} from '../Login';
 
-test('renders login container', () => {
-  render(
-    <Login />);
+afterEach(cleanup);
 
-  var element = document.getElementById("LoginContainer")
-  expect(element).toBeInTheDocument();
+
+
+it("renders without crashing", () => {
+  const div = document.createElement("div");
+  ReactDOM.render(<Login></Login>, div)
+})
+
+test('renders login container correctly', () => {
+  const {getByTestId} = render(<Login></Login>)
+  expect(getByTestId('LoginContainer')).toBeInTheDocument();
 });
 
-test('renders email inputs', () => {
-  render(
-    <Login />);
 
-  var emaillabel = document.getElementById("EmailLabel")
-  var emailinput = document.getElementById("EmailInput")
-  expect(emaillabel).toBeInTheDocument();
-  expect(emailinput).toBeInTheDocument();
+it(" renders emaillabel correctly", () =>{
+  const {getByTestId} = render(<Login></Login>)
+  expect(getByTestId('EmailLabel')).toHaveTextContent("Email")
+  expect(getByTestId('EmailLabel')).toBeInTheDocument();
+})
+
+it('renders emailinput correctly', () => {
+  const {getByTestId} = render(<Login></Login>)
+  expect(getByTestId('EmailInput')).toBeInTheDocument();
 });
 
-test('renders password inputs', () => {
-  render(
-    <Login />);
+test('renders passwordlabel correctly', () => {
+    const {getByTestId} = render(<Login></Login>)
+    expect(getByTestId('PasswordLabel')).toHaveTextContent("Password")
+    expect(getByTestId('PasswordLabel')).toBeInTheDocument();
+});
 
-  var passwordlabel = document.getElementById("PasswordLabel")
-  var passwordinput = document.getElementById("PasswordInput")
-  expect(passwordlabel).toBeInTheDocument();
-  expect(passwordinput).toBeInTheDocument();
+it('renders passwordinput correctly', () => {
+  const {getByTestId} = render(<Login></Login>)
+  expect(getByTestId('PasswordInput')).toBeInTheDocument();
 });
 
 test('renders LoginButton', () => {
-  render(
-    <Login />);
-
-  var button = document.getElementById("LoginButton")
-  expect(button).toBeInTheDocument();
+  const {getByTestId} = render(<Login></Login>)
+  expect(getByTestId("LoginButton")).toBeInTheDocument();
 });

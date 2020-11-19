@@ -82,8 +82,7 @@ export class Login extends Component {
 
     render() {
         return (
-            <div id="LoginContainer" name="LoginDIV">
-            <Container>
+            <Container data-testid="LoginContainer">
                 <Row xs={1}>
                     {this.CheckForErrors()}
                 </Row>
@@ -91,14 +90,15 @@ export class Login extends Component {
                     <Row>
                         <Col xs={4} />
                         <Col xs={4} style={{ textAlign: "center" }}>
-                            <label id="EmailLabel" style={{ width: "100%" }}>Email</label>
+                            <div ></div>
+                            <label data-testid="EmailLabel" id="EmailLabel" style={{ width: "100%" }}>Email</label>
                         </Col>
                     </Row>
                     <Row>
                         <Col xs={4}/>
                         <Col xs={4} style={{ textAlign: "center" }} >
                                     <input
-                                    id = "EmailInput"
+                                    data-testid = "EmailInput"
                                         type="email"
                                         name="email"
                                         placeholder="Email"
@@ -112,13 +112,14 @@ export class Login extends Component {
                     <Row>
                         <Col xs={4} />
                         <Col xs={4} style={{ textAlign: "center" }}>
-                            <label id="PasswordLabel" style={{ width: "100%" }}>Password</label>
+                            <label data-testid="PasswordLabel" id="PasswordLabel" style={{ width: "100%" }}>Password</label>
                         </Col>
                     </Row>
                     <Row>
                         <Col xs={4} />
                         <Col xs={4} style={{ textAlign: "center"}} >
                             <input
+                            data-testid="PasswordInput"
                                 id = "PasswordInput"
                                 type="password"
                                 name="password"
@@ -134,12 +135,11 @@ export class Login extends Component {
                     <Row>
                         <Col xs={4} />
                         <Col xs={4} style={{ textAlign: "center" }}>
-                            <Button id = "LoginButton" color="primary" size="lg" block type="submit">Login</Button>
+                            <Button data-testid = "LoginButton" id = "LoginButton" color="primary" size="lg" block type="submit">Login</Button>
                         </Col>
                     </Row>
                     </Form>
             </Container>
-            </div>
         );
     }
 }
