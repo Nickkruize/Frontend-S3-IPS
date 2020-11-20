@@ -1,4 +1,3 @@
-import {render} from '@testing-library/react';
 import { shallow } from 'enzyme';
 import React from 'react';
 import ReactDOM from 'react-dom';

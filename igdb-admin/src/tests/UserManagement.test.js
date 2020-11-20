@@ -3,8 +3,6 @@ import {shallow} from "enzyme";
 import { AccessDenied } from '../AccessDenied';
 
 
-const wrapper = shallow(<UserManager/>)
-
 const user = {
     email: "piet@gmail.com",
     username: "Piet",
@@ -34,6 +32,12 @@ const admin = {
 ]
   
   describe("rendering of the page for different account-priveleges", () => {
+
+    let wrapper;
+    beforeEach( () => {
+      wrapper = shallow(<UserManager/>);
+    });
+
     it("updates the user in the state", () => {
       expect(wrapper.state("User")).toEqual(null);
 
@@ -45,7 +49,6 @@ const admin = {
     });
 
     it("updates AllUsers in the state", () => {
-
         expect(wrapper.state("AllUsers")).toEqual(null);
 
         wrapper.setState({AllUsers : UserList})
@@ -53,14 +56,12 @@ const admin = {
         expect(wrapper.state("AllUsers")).toEqual(UserList);
     });
 
-    it("Return accessdenied when user is set null", () => {
-        wrapper.setState({User : null})
-
+    it("renders accessdenied when user is set null", () => {
         expect(wrapper.find(AccessDenied).length).toEqual(1);
         expect(wrapper.find('[data-testid="UserTable"]').length).toEqual(0);
     });
 
-    it("Return accessdenied when user is set to user", () => {
+    it("renders accessdenied when user is set to user", () => {
         wrapper.setState({User : user})
         wrapper.setState({AllUsers : UserList})
 
