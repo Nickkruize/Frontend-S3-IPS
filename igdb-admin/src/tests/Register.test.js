@@ -1,8 +1,10 @@
+import { cleanup } from '@testing-library/react';
 import { shallow } from 'enzyme';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Register} from '../Register';
 
+afterEach(cleanup)
 
 describe('<Register/>', () => {
   let wrapper;
