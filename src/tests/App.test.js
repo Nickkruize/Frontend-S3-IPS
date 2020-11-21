@@ -19,4 +19,8 @@ it("calls Navmenu at least once", () => {
     expect(wrapper.find(NavMenu).length).toEqual(1);
   });
 
+  test("intention fail", () =>{
+    let fail = false;
+    expect(fail).toBeTruthy();
+  })
 
